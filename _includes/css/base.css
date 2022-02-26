@@ -1,0 +1,48 @@
+.progress-label {
+  float: left;
+  margin-right: 1em;
+}
+.bg-btc {
+	background-color: #f2a900;
+}
+.bg-eth {
+	background-color: #81a6f7;
+}
+
+
+.btn-ukraine {
+  background-color: #0066cc;
+  color: #fff;
+  border-color: #0066cc;
+}
+.btn-ukraine:hover,
+.btn-ukraine:focus {
+  border-color: #0055AA !important;
+  background-color: #0055AA;
+  color: #fff;
+}
+
+
+.btn-outline-ukraine {
+  background-color: transparent;
+  color: #0066cc;
+  border-color: #0066cc;
+}
+.btn-outline-ukraine:hover,
+.btn-outline-ukraine:focus {
+  background-color: #0066cc;
+  color: #fff;
+  border-color: #0066cc;
+}
+.btn-ukraine-secondary {
+  background-color: #ffd700;
+  color: #000;
+  border-color: #ffd700;
+}
+.btn-ukraine-secondary:hover,
+.btn-ukraine-secondary:focus {
+  border-color: #F7D000 !important;
+  background-color: #F7D000;
+  color: #000;
+}
+
