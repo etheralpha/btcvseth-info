@@ -1,0 +1,24 @@
+{
+  "name": "btcvseth-info",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This is the repo for <https://btcvseth.info>, a site to monitor BTC vs ETH donations to Ukraine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etheralpha/btcvseth-info.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etheralpha/btcvseth-info/issues"
+  },
+  "homepage": "https://github.com/etheralpha/btcvseth-info#readme",
+  "dependencies": {
+    "netlify": "^11.0.0",
+    "node-fetch": "~1.0.2"
+  }
+}
