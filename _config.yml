@@ -1,0 +1,27 @@
+# Read about configuration here: https://jekyllrb.com/docs/configuration/options/
+title: BTC vs ETH
+description: A friendly competition between the Bitcoin and Ethereum community to raise funds for Ukraine.
+keywords: ukraine, donate, crypto, eth, btc
+url: https://btcvseth.info
+permalink: pretty # Do not change this, it will break all links
+timezone: America/New_York
+markdown: kramdown
+# port: 4400
+livereload: true
+
+
+
+# Global variables
+analytics_tag: 
+
+# Notifications
+notification_enabled: false
+notification_id: 1 # Increment value when new notification to show again
+notification_msg: This is a test notification message.<br>This is a test notification message.
+
+# Navigation
+nav_enabled: false
+
+# Links
+github_repo: https://github.com/etheralpha/btcvseth-info
+
