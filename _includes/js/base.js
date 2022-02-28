@@ -1,14 +1,39 @@
-var priceBtc = 37866;
-var priceEth = 2613.52;
-var donationsBtc = 114.0733229;
-var donationsEth = 1995;
+// Enable tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+function copyText(text, id) {
+  navigator.clipboard.writeText(text).then(function() {
+    let tooltipElement = document.getElementById(id);
+    let tooltip = bootstrap.Tooltip.getInstance(tooltipElement);
+    setTimeout(() => { tooltip.hide(); }, 1200);
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+
+
+var priceBtc = 40974.63;
+var priceEth = 2807.79;
+var donationsBtc = 153.79528934;
+var donationsEth = 2235.1159519977414;
 
 // API example responses
-  // https://api.etherscan.io/api?module=account&action=balance&address=0x165CD37b4C644C2921454429E7F9358d18A45e14&tag=latest&apikey=ETHERSCAN
+  // https://api.blockcypher.com/v1/eth/main/addrs/0x165CD37b4C644C2921454429E7F9358d18A45e14/balance
     // {
-    //   "status":"1",
-    //   "message":"OK",
-    //   "result":"1364198762369796135639"
+    //   "address": "0x165CD37b4C644C2921454429E7F9358d18A45e14",
+    //   "total_received": 2234932100084210295674,
+    //   "total_sent": 2129973373410475911195,
+    //   "balance": 105307063648455310636,
+    //   "unconfirmed_balance": -403720073617670453765,
+    //   "final_balance": -298413009969215143129,
+    //   "n_tx": 6936,
+    //   "unconfirmed_n_tx": 17,
+    //   "final_n_tx": 6953,
+    //   "nonce": 7,
+    //   "pool_nonce": 10
     // }
 
   // https://blockchain.info/rawaddr/357a3So9CbsNfBBgFYACGvxxS6tMaDoa1P?limit=0&cors=true
@@ -24,25 +49,25 @@ var donationsEth = 1995;
     // }
 
   // https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum&vs_currencies=usd
-  // {
-  //   "bitcoin": {
-  //     "usd": 39090
-  //   },
-  //   "ethereum": {
-  //     "usd": 2780.88
-  //   }
-  // }
+    // {
+    //   "bitcoin": {
+    //     "usd": 39090
+    //   },
+    //   "ethereum": {
+    //     "usd": 2780.88
+    //   }
+    // }
 
 async function getData() {
-  const [etherscan, blockchaininfo, coingecko] = await Promise.all([
-    fetch("/.netlify/functions/etherscan/"),
+  const [blockcypher, blockchaininfo, coingecko] = await Promise.all([
+    fetch("/.netlify/functions/blockcypher/"),
     fetch("/.netlify/functions/blockchaininfo/"),
     fetch("/.netlify/functions/coingecko/")
   ]);
-  const etherscanResponse = await etherscan.json();
+  const blockcypherResponse = await blockcypher.json();
   const blockchaininfoResponse = await blockchaininfo.json();
   const coingeckoResponse = await coingecko.json();
-  // console.log(etherscanResponse);
+  // console.log(blockcypherResponse);
   // console.log(blockchaininfoResponse);
   // console.log(coingeckoResponse);
 
@@ -53,10 +78,10 @@ async function getData() {
 
   donationsBtc = blockchaininfoResponse["total_received"]/100000000;
   // console.log(donationsBtc);
-  donationsEth += etherscanResponse.result/1000000000000000000;
+  donationsEth = blockcypherResponse["total_received"]/1000000000000000000;
   // console.log(donationsEth);
 
-  return [etherscanResponse,blockchaininfoResponse,coingeckoResponse];
+  return;
 }
 
 
