@@ -1,3 +1,20 @@
+// Enable tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+function copyText(text, id) {
+  navigator.clipboard.writeText(text).then(function() {
+    let tooltipElement = document.getElementById(id);
+    let tooltip = bootstrap.Tooltip.getInstance(tooltipElement);
+    setTimeout(() => { tooltip.hide(); }, 1200);
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+
+
 var priceBtc = 40974.63;
 var priceEth = 2807.79;
 var donationsBtc = 153.79528934;
